@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  collectionView
  */
-@property(nonatomic, readwrite, strong)UICollectionView *collectionView;
+@property(nonatomic, readwrite, strong)HTCommonCollectionView *collectionView;
 
 
 /**

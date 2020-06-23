@@ -44,16 +44,18 @@
 }
 
 - (void)unfold {
-    @weakify(self);
-    [UIView animateWithDuration:self.duration animations:^{
-        [self mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(self.unfoldSize);
-        }];
-        [self.superview layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        @strongify(self);
-        [self unflodComplet];
-    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @weakify(self);
+           [UIView animateWithDuration:self.duration animations:^{
+               [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                   make.size.mas_equalTo(self.unfoldSize);
+               }];
+               [self.superview layoutIfNeeded];
+           } completion:^(BOOL finished) {
+               @strongify(self);
+               [self unflodComplet];
+           }];
+    });
 }
 
 - (void)packUp {

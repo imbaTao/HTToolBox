@@ -1,3 +1,4 @@
+
 //
 //  HTCommonTableViewModel.m
 //  HTToolBox
@@ -12,11 +13,14 @@
 @synthesize data = _data;
 - (void)vm {
     [super vm];
-    self.page = 0;
+    self.page = 1;
     self.pageSize = 10;
     self.canPullUp = true;
     self.canPulldown = true;
     self.style = UITableViewStyleGrouped;
+   
+    // 默认是自动第一次刷新true
+    self.autoFirstRefresh = true;
     
     // request remote data
     @weakify(self)
@@ -102,6 +106,10 @@
     return [RACSignal empty];
 }
 
+- (NSString *)cellIdentiyferWithIndexPath:(NSIndexPath *)indexPath {
+    // 没有重写始终返回第一个
+    return self.classNames.firstObject;
+}
 #pragma mark - Setter && Getter
 - (void)setData2:(NSArray *)data2 {
     _data2 = data2;
@@ -129,6 +137,13 @@
         _emtyTips = @"暂无商品信息";
     }
     return _emtyTips;
+}
+
+- (NSArray *)classNames {
+    if (!_classNames) {
+        _classNames = @[@"UITableViewCell,UICollectionViewCell"];
+    }
+    return _classNames;
 }
 
 @end

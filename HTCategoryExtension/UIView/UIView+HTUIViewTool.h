@@ -11,6 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (HTUIViewTool)
+
+@property (nonatomic, weak) UIViewController *viewController;
+@property (nonatomic, weak) UINavigationController *navigationController;
+
 /**
  设置圆角
  @param radius 圆角大小
@@ -21,6 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
  设置圆角默认是maskToBounds是true
  */
 - (void)settingCornerRadius:(CGFloat)radius;
+
+/**
+ 设置不同方向的倒圆角
+ */
+- (void)settingCornerWithByRoundingCorners:(UIRectCorner)corners radius:(CGFloat)radius;
 
 /**
  设置阴影
@@ -73,6 +82,15 @@ NS_ASSUME_NONNULL_BEGIN
  设置通用面板的圆角和阴影
  */
 - (void)setCommonBoardRadiusAndShadow;
+
+
+
+
+
+/**
+ 判断视图是否在滚动
+ */
+- (BOOL)isRolling:(UIView *)view;
 @end
 
 NS_ASSUME_NONNULL_END

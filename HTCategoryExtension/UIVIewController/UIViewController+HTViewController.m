@@ -7,14 +7,19 @@
 //
 
 #import "UIViewController+HTViewController.h"
-#import "UINavigationBar+ST.h"
+#import "UINavigationBar+HTNavigationBar.h"
 @implementation UIViewController (HTViewController)
+
+// 方法
+- (void)setupUI{
+    
+}
 
 - (void)confingNavigationBarBackGroundWithImgName:(NSString *)imgName {
     if (imgName.length) {
         UIImage *backGroundImage = [UIImage imageNamed:imgName];
         backGroundImage = [backGroundImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
-        [self.navigationController.navigationBar st_setBackgroundColor:UIColor.clearColor];
+        [self.navigationController.navigationBar setBackgroundColor:UIColor.clearColor];
         [self.navigationController.navigationBar setBackgroundImage:backGroundImage forBarMetrics:UIBarMetricsDefault];
     }else {
         [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];

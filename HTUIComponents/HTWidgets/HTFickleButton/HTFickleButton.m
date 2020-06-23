@@ -9,67 +9,98 @@
 #import "HTFickleButton.h"
 
 @interface  HTFickleButton()
-/**
- content
- */
-@property(nonatomic, readwrite, strong)UILabel *content;
 
 /**
- icon
+ position
  */
-@property(nonatomic, readwrite, strong)UIImageView *icon;
-
-/**
- icon数组
- */
-@property(nonatomic, readwrite, copy)NSArray *imgs;
-
-/**
- 颜色
- */
-@property(nonatomic, readwrite, copy)NSArray <UIColor *>*colors;
-
-/**
- 角度
- */
-@property(nonatomic, readwrite, assign)CGFloat angle;
+@property(nonatomic, readwrite, assign)NSInteger position;
 
 @end
 
 @implementation HTFickleButton
 @synthesize selected = _selected;
+
+- (instancetype)initWithHorizontalRotationButtonWithTitle:(NSString *)title font:(UIFont *)font normalColor:(UIColor *)color imgName:(NSString *)imgName {
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        // 标题
+        self.content = [UILabel font:font color:color textAlignment:NSTextAlignmentLeft placeholder:title];
+        [self addSubview:self.content];
+        
+        // 图标
+        self.icon = [UIImageView name:imgName];
+        [self addSubview:self.icon];
+        
+        // 添加点击事件
+        [self addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        // layout
+        [self.content mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(0);
+            make.centerY.equalTo(self);
+        }];
+        
+        [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.offset(0);
+            make.centerY.equalTo(self);
+        }];
+        
+    }
+    return self;
+}
+
+
+
+- (instancetype)initWithHorizontalRotationButtonWithTitle:(NSString *)title font:(UIFont *)font normalColor:(UIColor *)color imgName:(NSString *)imgName position:(NSInteger)position {
+    self = [self initWithHorizontalRotationButtonWithTitle:title font:font normalColor:color imgName:imgName];
+    switch (position) {
+        case 0:{
+            // 图左侧
+            [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.right.offset(0);
+                make.centerY.equalTo(self);
+            }];
+            
+            [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(0);
+                make.centerY.equalTo(self);
+            }];
+        }break;
+        case 1:{
+            // 右侧
+            [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(0);
+                make.centerY.equalTo(self);
+            }];
+            
+            [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.right.offset(0);
+                make.centerY.equalTo(self);
+            }];
+        }break;
+        default:
+            break;
+    }
+    self.position = position;
+    [self relayoutWithPositon:self.position];
+    return self;
+    
+}
+
+// 子类复写
+- (void)relayoutWithPositon:(NSInteger)position {
+    
+}
+
+
 - (instancetype)initWithHorizontalRotationButtonWithTitle:(NSString *)title font:(UIFont *)font normalColor:(UIColor *)color selectedColor:(UIColor *)selectedColor imgs:(NSArray<NSString *> *)imgs angle:(CGFloat)angle{
-    
-     self = [super initWithFrame:CGRectZero];
-    
-    
+     self = [self initWithHorizontalRotationButtonWithTitle:title font:font normalColor:color imgName:imgs.firstObject];
     self.imgs = imgs;
+    self.icon.image = [UIImage imageNamed:imgs.firstObject];
     if (selectedColor) {
         self.colors = @[color,selectedColor];
     }
     self.angle = angle;
-    self.content = [UILabel font:font color:color textAlignment:NSTextAlignmentLeft placeholder:title];
-    [self addSubview:self.content];
-    
-    self.icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imgs.firstObject]];
-    [self addSubview:self.icon];
-    
-    
-    [self addTarget:self action:@selector(clickAction)];
-    
-    // layout
-    [self.content mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(0);
-        make.centerY.equalTo(self);
-    }];
-    
-    [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(0);
-        make.centerY.equalTo(self);
-    }];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0)), dispatch_get_main_queue(), ^{
-//        [s]
-//    });
     return self;
 }
 
@@ -97,6 +128,11 @@
     }completion:^(BOOL finished) {
         self.userInteractionEnabled = true;
     }];
+}
+
+- (void)revertButtonStatus {
+    self.icon.transform = CGAffineTransformIdentity;
+    _selected = false;
 }
 
 - (void)changeNewTitle:(NSString *)newValue {

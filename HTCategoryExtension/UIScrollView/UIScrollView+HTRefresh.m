@@ -10,6 +10,9 @@
 
 @implementation UIScrollView (HTRefresh)
 
+
+#define HTRefreshStateLabelFontSize 14.0
+#define HTRefreshStateLabelTextColor rgba(153,153,153, 1)
 - (MJRefreshNormalHeader *)ht_addHeaderRefresh:(void(^)(MJRefreshNormalHeader *header))refreshingBlock {
     
     __weak __typeof(&*self) weakSelf = self;
@@ -17,8 +20,8 @@
         __weak __typeof(&*weakSelf) strongSelf = weakSelf;
         !refreshingBlock?:refreshingBlock((MJRefreshNormalHeader *)strongSelf.mj_header);
     }];
-    mj_header.stateLabel.font = [UIFont fontSize:14];
-    mj_header.stateLabel.textColor = rgba(153,153,153, 1);
+    mj_header.stateLabel.font = [UIFont fontSize:HTRefreshStateLabelFontSize];
+    mj_header.stateLabel.textColor = HTRefreshStateLabelTextColor;
     mj_header.lastUpdatedTimeLabel.hidden = YES;
     self.mj_header = mj_header;
     return mj_header;
@@ -31,8 +34,8 @@
         !refreshingBlock?:refreshingBlock((MJRefreshAutoNormalFooter *)strongSelf.mj_footer);
     }];
 
-    mj_footer.stateLabel.font = [UIFont fontSize:14];
-    mj_footer.stateLabel.textColor = rgba(153,153,153, 1);
+    mj_footer.stateLabel.font = [UIFont fontSize:HTRefreshStateLabelFontSize];
+    mj_footer.stateLabel.textColor = HTRefreshStateLabelTextColor;
     
 //    [mj_footer setTitle:@"..." forState:MJRefreshStateNoMoreData];
     self.mj_footer = mj_footer;

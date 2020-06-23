@@ -18,11 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readwrite, strong)UICollectionViewFlowLayout *flowLayout;
 
 /**
- 注册cell的类别种类
- */
-@property(nonatomic, readwrite, copy)NSArray *cellNames;
-
-/**
  根据下标获取模型数据
  */
 - (id)modelDataWithIndexPath:(NSIndexPath *)indexPath;

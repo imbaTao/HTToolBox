@@ -12,15 +12,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface UIFont (HTFont)
-// 常规体
+/**
+ 常规体
+ */
 + (instancetype)fontSize:(CGFloat)size;
 + (instancetype)fontSize:(CGFloat)size name:(NSString *)name;
 
-// 粗体
+/**
+ 粗体
+ */
 + (instancetype)boldFontSize:(CGFloat)size;
 
-// 中规体
+/**
+ 中规体
+ */
 + (instancetype)mediumFontSize:(CGFloat)size;
+
+
+/**
+ 特粗体
+ */
++ (instancetype)heavyFontSize:(CGFloat)size;
+
 @end
 
 NS_ASSUME_NONNULL_END

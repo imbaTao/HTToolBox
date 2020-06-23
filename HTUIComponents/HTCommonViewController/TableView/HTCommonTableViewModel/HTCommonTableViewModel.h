@@ -8,6 +8,9 @@
 
 #import "HTCommonViewModel.h"
 
+// 整型转字符串
+#define INTTOSTRING(num) [NSString stringWithFormat:@"%zi",num]
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HTCommonTableViewModel : HTCommonViewModel
@@ -36,6 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
  是否能上拉拉
  */
 @property (nonatomic, readwrite, assign) BOOL canPullUp;
+
+/**
+ 是否自动开始第一次刷新
+ */
+@property (nonatomic, readwrite, assign) BOOL autoFirstRefresh;
 
 /**
  当前页 defalut is 1
@@ -152,6 +160,11 @@ NS_ASSUME_NONNULL_BEGIN
  根据页码获取数据
  */
 - (RACSignal *)fetchDataWithPage:(NSInteger)page;
+
+/**
+ 根据下标返回Cell的ID
+ */
+- (NSString *)cellIdentiyferWithIndexPath:(NSIndexPath *)indexPath;
 
 
 

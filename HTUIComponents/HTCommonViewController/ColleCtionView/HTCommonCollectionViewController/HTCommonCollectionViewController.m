@@ -18,14 +18,16 @@
 
 @implementation HTCommonCollectionViewController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 }
 
-- (void)p_setupMainView {
+- (void)p_setupMainView {    
     self.collectionView = [[HTCommonCollectionView alloc] initWithFrame:CGRectZero layout:self.vm.flowLayout cellClassNames:self.vm.classNames delegateTarget:self];
-    
     [self.view addSubview:self.collectionView];
     
     // layout
@@ -48,8 +50,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.vm.cellNames[0] forIndexPath:indexPath];
-    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self.vm cellIdentiyferWithIndexPath:indexPath] forIndexPath:indexPath];
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath collectionView:collectionView];
     return cell;

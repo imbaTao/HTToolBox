@@ -41,19 +41,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 上拉事件
+ 信号方式触发上拉事件
  */
 - (void)headerRefresh;
 
 /**
- 下拉事件
+ 信号方式触发下拉事件
  */
 - (void)footerRefresh;
+
+
+/**
+ 上拉事件
+ */
+- (void)startHeaderRefresh;
+
+/**
+ 下拉事件
+ */
+- (void)startFooterRefresh;
 
 /**
  设置上拉下拉刷新
  */
-- (void)pullConfig;
+- (void)refreshConfig;
 
 /**
  设置

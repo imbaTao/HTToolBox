@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
  禁止导航栏底部的线
  */
 - (void)banNavigationBarBaseLine;
+
+// 方法
+- (void)setupUI;
 @end
 
 NS_ASSUME_NONNULL_END

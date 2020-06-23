@@ -9,9 +9,8 @@
 #ifndef HTMacro_h
 #define HTMacro_h
 
-
+#import "HTCommonMacro.h"
 #import "HTSingletonMacro.h"
 #import "HTColorMacro.h"
-#import "HTCommonUserMacro.h"
-
+#import "HTUIMacro.h"
 #endif /* HTMacro_h */

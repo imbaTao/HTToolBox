@@ -10,10 +10,15 @@
 
 @implementation HTCommonCollectionView
 
+//-(void)layoutSubviews {
+//    [super layoutSubviews];
+//    self.bounds = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+//}
 
 - (instancetype)initWithFrame:(CGRect)frame layout:(UICollectionViewFlowLayout *)layout cellClassNames:(NSArray *)cellClassNames delegateTarget:(nullable id)target {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
+        self.data = [NSMutableArray array];
         self.cellClassNames = cellClassNames;
         self.backgroundColor = [UIColor clearColor];
         self.showsVerticalScrollIndicator = false;
@@ -21,9 +26,9 @@
         [self registerClass:NSClassFromString(@"HTCommonCollectionViewCell") forCellWithReuseIdentifier:@"HTCommonCollectionViewCell"];
         
         if (@available(iOS 11.0, *)) {
-            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//            self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }else {
-            self.translatesAutoresizingMaskIntoConstraints = false;
+//            self.translatesAutoresizingMaskIntoConstraints = false;
         }
         
         for (NSString *name in cellClassNames) {
@@ -36,8 +41,14 @@
         }
         self.delegate = target;
         self.dataSource = target;
+        
+        [self setupUI];
     }
     return self;
+}
+
+- (void)setupUI {
+    
 }
 
 - (instancetype)initWithlayout:(UICollectionViewFlowLayout *)layout cellClassNames:(NSArray *)cellClassNames delegateTarget:(id)target {

@@ -25,10 +25,10 @@
     
     // 如果是纵向排列
     if (layout.scrollDirection == UICollectionViewScrollDirectionVertical) {
-        itemAllWidth = BWScreenWidth - sectionInset.left - sectionInset.right - interitemSpacing * (itemCount - 1);
+        itemAllWidth = SCREEN_W - sectionInset.left - sectionInset.right - interitemSpacing * (itemCount - 1);
     }else {
         // 横向排列
-        itemAllWidth = BWScreenWidth - sectionInset.left - sectionInset.right - lineSpacing * (itemCount - 1);
+        itemAllWidth = SCREEN_W - sectionInset.left - sectionInset.right - lineSpacing * (itemCount - 1);
     }
     
     if (needChangeSize) {

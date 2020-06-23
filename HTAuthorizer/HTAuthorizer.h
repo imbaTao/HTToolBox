@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HTAuthorizer : NSObject
 
 /**
- 监测相机权限
+ 检测相机权限
  @param resultBlock 返回的结果 true 为可用，false为不可用
  */
 + (void)fechCameraAuthorizationStatus:(void(^)(BOOL result))resultBlock;

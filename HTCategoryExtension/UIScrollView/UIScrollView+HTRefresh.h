@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MJRefresh.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIScrollView (HTRefresh)
@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  添加上拉加载控件(刷新尾)
  */
 - (MJRefreshAutoNormalFooter *)ht_addFooterRefresh:(void(^)(MJRefreshAutoNormalFooter *footer))refreshingBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
