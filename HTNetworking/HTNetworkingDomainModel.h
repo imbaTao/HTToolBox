@@ -27,6 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, readwrite, copy)NSString *releaseDomain;
 
+/**
+ token
+ */
+@property(nonatomic, readwrite, copy)NSDictionary *tokenDic;
+
 @end
 
 NS_ASSUME_NONNULL_END

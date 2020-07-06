@@ -45,6 +45,25 @@ NS_ASSUME_NONNULL_BEGIN
 */
 - (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width model:(NSLineBreakMode)model;
 
+/**
+获取指定长度的字符串,包含中文的，中文字符算几位 bit 传1或2
+*/
+- (NSString *)fetchLengthWithText:(NSString *)text length:(NSInteger)length chineseBit:(NSInteger)bit;
+
+/**
+ 获取拼音首字母(传入汉字字符串, 返回大写拼音首字母)
+ */
++ (NSString *)firstCharactor:(NSString *)aString;
+
+
+/**
+ 根据最大尺寸，字体，获取文本尺寸
+ */
+- (CGSize)boundingRectWithSize:(CGSize)size withFont:(NSInteger)font;
+
+
+//手机号有效性
+- (BOOL)isMobileNumber;
 
 @end
 

@@ -49,11 +49,6 @@ singleH();
 @property(nonatomic, readwrite, strong)AFHTTPSessionManager *manager;
 
 /**
- 授权头,一般是公司的token验证
- */
-@property(nonatomic, readonly, copy)NSString *authorizeContent;
-
-/**
  公司返回数据约定的data的键
  */
 @property(nonatomic, readonly, copy)NSString *dataKey;
@@ -86,12 +81,17 @@ singleH();
 /**
  get 请求
  */
-+ (RACSignal *)getWithParams:(nullable NSMutableDictionary *)params url:(NSString *)url;
++ (RACSignal *)getWithParams:(id)params url:(NSString *)url;
 
 /**
  post 请求
  */
-+ (RACSignal *)postWithParams:(nullable NSMutableDictionary *)params url:(NSString *)url;
++ (RACSignal *)postWithParams:(id)params url:(NSString *)url;
+
+/**
+ 重置token
+ */
++ (void)restToken;
 @end
 
 NS_ASSUME_NONNULL_END

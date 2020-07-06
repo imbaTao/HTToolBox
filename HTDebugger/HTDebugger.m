@@ -10,13 +10,15 @@
 #import "HTDebuggerViewController.h"
 #import "HTCommonTabbarController.h"
 #import "HTFPSLabel.h"
-#define ISDEBUGER 0
 
+
+#import "HomeController.h"
+#define ISDEBUGER 1
 @implementation HTDebugger
 
 singleM();
 - (BOOL)debugerWithKewindow:(UIWindow *)window {
-    
+     
     if (!window) {
       window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
       window.backgroundColor = [UIColor whiteColor];
@@ -27,9 +29,10 @@ singleM();
     // 这个暂时用不了了
     [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        HTFPSLabel *label = [[HTFPSLabel alloc] initWithFrame:CGRectMake(120, StatusBarTopHeight, 50, 20)];
+        HTFPSLabel *label = [[HTFPSLabel alloc] initWithFrame:CGRectMake(SCREEN_W / 2 - 100
+                                                                         , StatusBarTopHeight, 50, 20)];
         if (window.safeAreaInsets.top > 0) {
-             label.x = 30;
+//             label.x = 30;
              label.y = 0;
          }
         [window addSubview:label];
@@ -49,8 +52,11 @@ singleM();
 //        CampusInfoCompleteController
         
 //        CampusCertificationController //校园 组织认证
-        testVC = [[NSClassFromString(@"PersonalAuthController") alloc] init];
-        
+//        testVC = [[NSClassFromString(@"HomeController") alloc] init];
+        HomeController *vc = [[HomeController alloc] init];
+//        vc.view.backgroundColor = [UIColor redColor];
+        [vc cameraBtnClick];
+        testVC = vc;
         
         
         

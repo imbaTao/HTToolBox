@@ -84,7 +84,7 @@
                              title:(NSString *)title
                               font:(UIFont *)font
                         titleColor:(UIColor *)titleColor
-                  highlightedColor:(UIColor *)highlightedColor
+                  highlightedColor:(nullable UIColor *)highlightedColor
                    titleEdgeInsets:(UIEdgeInsets)titleEdgeInsets;
 
 

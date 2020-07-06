@@ -69,7 +69,7 @@
     button.titleLabel.font = font?font:nil;
     [button setTitleColor:titleColor?titleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [button setTitleColor:highlightedColor?highlightedColor:nil forState:UIControlStateHighlighted];
-    
+    [button setTitleColor:rgba(204, 204, 204, 1) forState:UIControlStateDisabled];
     [button sizeToFit];
     if (button.bounds.size.width < BarItemWidth) {
         CGFloat width = BarItemWidth / button.bounds.size.height * button.bounds.size.width;

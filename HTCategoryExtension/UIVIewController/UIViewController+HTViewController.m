@@ -10,11 +10,6 @@
 #import "UINavigationBar+HTNavigationBar.h"
 @implementation UIViewController (HTViewController)
 
-// 方法
-- (void)setupUI{
-    
-}
-
 - (void)confingNavigationBarBackGroundWithImgName:(NSString *)imgName {
     if (imgName.length) {
         UIImage *backGroundImage = [UIImage imageNamed:imgName];
@@ -27,6 +22,13 @@
 }
 
 - (void)banNavigationBarBaseLine {
+     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
+
+- (void)navigationBarLucency {
+    self.navigationController.navigationBar.translucent = true;
+    [self.navigationController.navigationBar setBackgroundColor:UIColor.clearColor];
+    [self banNavigationBarBaseLine];
 }
 @end

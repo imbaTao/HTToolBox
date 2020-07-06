@@ -22,8 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)banNavigationBarBaseLine;
 
-// 方法
-- (void)setupUI;
+/**
+ 使导航栏透明
+ */
+- (void)navigationBarLucency;
+
 @end
 
 NS_ASSUME_NONNULL_END

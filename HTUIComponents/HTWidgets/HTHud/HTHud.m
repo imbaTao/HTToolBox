@@ -38,6 +38,7 @@
     circleView.strokeThickness = 2;
     circleView.strokeColor = UIColor.whiteColor;
     hud.mode = MBProgressHUDModeCustomView;
+    hud.userInteractionEnabled = false;
     [hud setMinSize:CGSizeMake(HUDCircleWidth, HUDCircleWidth)];
     
     // 需要一个中间图层
