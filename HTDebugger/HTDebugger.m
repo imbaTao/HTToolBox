@@ -13,7 +13,7 @@
 
 
 #import "HomeController.h"
-#define ISDEBUGER 1
+#define ISDEBUGER 0
 @implementation HTDebugger
 
 singleM();
@@ -52,10 +52,11 @@ singleM();
 //        CampusInfoCompleteController
         
 //        CampusCertificationController //校园 组织认证
-//        testVC = [[NSClassFromString(@"HomeController") alloc] init];
+//        testVC = [[NSClassFromString(@"PublishShortArticlesController") alloc] init];
+        
         HomeController *vc = [[HomeController alloc] init];
-//        vc.view.backgroundColor = [UIColor redColor];
-        [vc cameraBtnClick];
+        vc.view.backgroundColor = [UIColor redColor];
+//        [vc cameraBtnClick];
         testVC = vc;
         
         

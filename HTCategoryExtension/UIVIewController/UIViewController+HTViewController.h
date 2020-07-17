@@ -27,6 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)navigationBarLucency;
 
+
+/**
+ rac预留函数，方便打出来
+ */
+- (void)racSetup;
+
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

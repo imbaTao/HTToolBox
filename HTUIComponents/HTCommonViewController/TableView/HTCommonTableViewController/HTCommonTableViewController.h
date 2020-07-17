@@ -29,10 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, readwrite, strong)UIView *emptyView;
 
-/**
- vm
- */
-@property(nonatomic, readwrite, strong)HTCommonTableViewModel *vm;
 
 /**
  使用vm初始化

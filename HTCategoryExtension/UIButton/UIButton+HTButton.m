@@ -34,7 +34,7 @@
     return button;
 }
 
-+ (instancetype)iconName:(NSString *)iconName {
++ (instancetype)buttonWithIconName:(NSString *)iconName {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     if (iconName.length) {
         [button setImage:[UIImage imageNamed:iconName] forState:UIControlStateNormal];
@@ -42,7 +42,16 @@
     return button;
 }
 
-
++ (instancetype)buttonWithNormalIconName:(NSString *)normalIconName seletedIconName:(NSString *)seletedIconName {
+     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+       if (normalIconName.length) {
+           [button setImage:[UIImage imageNamed:normalIconName] forState:UIControlStateNormal];
+       }
+        if (seletedIconName.length) {
+            [button setImage:[UIImage imageNamed:seletedIconName] forState:UIControlStateSelected];
+        }
+    return button;
+}
 
 
 + (instancetype)buttonWithTitle:(NSString *)title titleColor:(UIColor *)titleCorlor font:(UIFont *)font{

@@ -15,7 +15,7 @@
 @implementation HTAuthorizer
 
 - (UIWindow *)ht_KeyWindow {
-   if (@available(iOS 13.0, *)) {
+    if (@available(iOS 13.0, *)) {
         return [UIApplication sharedApplication].windows.firstObject;
     }else {
         return [UIApplication sharedApplication].keyWindow;
@@ -34,24 +34,32 @@
             if (!granted) {
                 [self p_showSettingTipsWithType:1];
             }
-             resultBlock(granted);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                resultBlock(granted);
+            });
         }];
     } else {
-        resultBlock(true);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            resultBlock(true);
+        });
+        
     }
 }
 
 // 获取相册权限
 + (void)fechPhotoLibraryAuthorizationStatus:(void (^)(BOOL result))resultBlock{
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        if ((status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)) {
-            // 无权限显示权限弹窗
-            [self p_showSettingTipsWithType:2];
-        } else if (status == PHAuthorizationStatusNotDetermined) {
-             resultBlock(false);
-        } else {
-            resultBlock(true);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ((status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)) {
+                // 无权限显示权限弹窗
+                [self p_showSettingTipsWithType:2];
+            } else if (status == PHAuthorizationStatusNotDetermined) {
+                resultBlock(false);
+            } else {
+                resultBlock(true);
+            }
+        });
     }];
 }
 

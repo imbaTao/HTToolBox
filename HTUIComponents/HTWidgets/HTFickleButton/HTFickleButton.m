@@ -135,11 +135,18 @@
     _selected = false;
 }
 
-- (void)changeNewTitle:(NSString *)newValue {
-    self.content.text = newValue;
-    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(self.content.intrinsicContentSize.width + 6 + self.icon.size.width);
-    }];
+
+- (void)flickButtonChangeIcon:(NSString *)value {
+    self.icon.image = [UIImage imageNamed:value];
 }
+
+
+- (void)flickButtonChangeTitle:(NSString *)value {
+      self.content.text = value;
+     [self mas_updateConstraints:^(MASConstraintMaker *make) {
+         make.width.offset(self.content.intrinsicContentSize.width + 6 + self.icon.size.width);
+     }];
+}
+
 
 @end

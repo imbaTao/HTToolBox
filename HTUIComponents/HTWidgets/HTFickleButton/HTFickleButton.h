@@ -58,7 +58,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  变更标题
  */
-- (void)changeNewTitle:(NSString *)newValue;
+- (void)flickButtonChangeTitle:(NSString *)value;
+
+/**
+ 变更icon
+ */
+- (void)flickButtonChangeIcon:(NSString *)value;
+
+
 
 /**
  重置按钮的状态，图片旋转

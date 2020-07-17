@@ -13,18 +13,15 @@
 
 @interface HTCommonTableViewController ()
 
+/**
+ vm
+ */
+@property(nonatomic, readwrite, strong)HTCommonTableViewModel *vm;
+
 @end
 
 @implementation HTCommonTableViewController
 @synthesize tableView = _tableView;
-
-- (instancetype)initWithViewModel:(HTCommonTableViewModel *)vm {
-    self = [self init];
-    if (self) {
-        self.vm = vm;
-    }
-    return self;
-}
 
 #pragma mark - life Cycle
 - (void)viewDidLoad {

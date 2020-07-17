@@ -33,11 +33,18 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)title:(NSString *)title iconName:(NSString *)iconName fontSize:(CGFloat)size;
 
 /**
+ 根据图标名创建简单状态button
  @param iconName 图标名
  */
-+ (instancetype)iconName:(NSString *)iconName;
++ (instancetype)buttonWithIconName:(NSString *)iconName;
 
 
+/**
+ 根据图标名创建简单状态button
+ @param normalIconName 普通图标名
+ @param seletedIconName 选中图标名
+ */
++ (instancetype)buttonWithNormalIconName:(NSString *)normalIconName seletedIconName:(NSString *)seletedIconName;
 
 /**
  @param title 标题

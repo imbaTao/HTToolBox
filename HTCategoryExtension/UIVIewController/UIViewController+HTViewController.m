@@ -31,4 +31,8 @@
     [self.navigationController.navigationBar setBackgroundColor:UIColor.clearColor];
     [self banNavigationBarBaseLine];
 }
+
+- (void)racSetup{
+    
+}
 @end

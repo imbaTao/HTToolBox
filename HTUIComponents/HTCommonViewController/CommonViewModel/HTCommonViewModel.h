@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 整型转字符串
+#define INTTOSTRING(num) [NSString stringWithFormat:@"%zi",num]
+
 @interface HTCommonViewModel : NSObject
 
 - (void)vm;
