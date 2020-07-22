@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HTFlexibleFickleButton : HTFickleButton
-/**
+/**c
  文字图标间隔
  */
 @property(nonatomic, readwrite, assign)NSInteger interval;

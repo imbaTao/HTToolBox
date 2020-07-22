@@ -10,10 +10,7 @@
 
 @interface  HTFickleButton()
 
-/**
- position
- */
-@property(nonatomic, readwrite, assign)NSInteger position;
+
 
 @end
 
