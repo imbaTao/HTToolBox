@@ -84,6 +84,8 @@
     UILabel *label = [[self alloc] init];
     label.text = @"";
     label.textAlignment = NSTextAlignmentLeft;
+    label.numberOfLines = 1;
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
     return label;
 }
 
