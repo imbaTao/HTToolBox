@@ -33,6 +33,7 @@
 
 - (void)p_setupMainView {
     self.tableView = [[HTCommonTableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:self.vm.style cellClassNames:self.vm.classNames delegateTarget:self];
+    self.tableView.showsVerticalScrollIndicator = false;
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

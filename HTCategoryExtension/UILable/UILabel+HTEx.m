@@ -7,10 +7,13 @@
 //
 
 #import "UILabel+HTEx.h"
+#define W_RATIO [UIScreen mainScreen].bounds.size.width / IPHone6sSize.width
+#define IPHone6sSize CGSizeMake(375, 667)
 
 @implementation UILabel (HTlabel)
 + (instancetype)size:(CGFloat)size color:(UIColor *)color textAlignment:(NSTextAlignment)alignment placeholder:(NSString *)placeholder{
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont fontSize:size];
     label.textColor = color;
     label.textAlignment = alignment;
@@ -29,6 +32,7 @@
 
 + (instancetype)regularFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont fontSize:size];
     label.textColor = color;
     return label;
@@ -36,6 +40,7 @@
 
 + (instancetype)centerRegularFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont fontSize:size];
     label.textColor = color;
     label.textAlignment = NSTextAlignmentCenter;
@@ -44,6 +49,7 @@
 
 + (instancetype)mediumFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont mediumFontSize:size];
     label.textColor = color;
     return label;
@@ -52,6 +58,7 @@
 + (instancetype)centerMediumFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
     label.font = [UIFont mediumFontSize:size];
+    size *= W_RATIO;
     label.textColor = color;
     label.textAlignment = NSTextAlignmentCenter;
     return label;
@@ -59,6 +66,7 @@
 
 + (instancetype)boldFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont boldFontSize:size];
     label.textColor = color;
     return label;
@@ -66,6 +74,7 @@
 
 + (instancetype)centerBoldFontWithSize:(CGFloat)size color:(UIColor *)color {
     UILabel *label = [self p_label];
+    size *= W_RATIO;
     label.font = [UIFont boldFontSize:size];
     label.textColor = color;
     label.textAlignment = NSTextAlignmentCenter;

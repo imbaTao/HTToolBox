@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImageView (HTImageView)
 + (instancetype)name:(NSString *)name;
+
+/**
+ 根据图片和圆角名初始化
+ */
++ (instancetype)name:(NSString *)name radius:(CGFloat)radius;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,12 +10,25 @@
 
 @implementation HTFlexibleFickleButton
 
+
+
+- (NSInteger)interval {
+    if (!_interval) {
+        _interval = 4;
+        @weakify(self);
+          [RACObserve(self, interval) subscribeNext:^(id  _Nullable x) {
+              @strongify(self);
+              [self relayoutWithPositon:self.position];
+          }];
+    }
+    return _interval;
+}
+
 // 子类复写
 // 子类复写
 - (void)relayoutWithPositon:(NSInteger)position {
     
-    // 间距
-    self.interval = 4;
+
     
     // 抗压缩
     //    [self.content setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];

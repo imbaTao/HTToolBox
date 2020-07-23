@@ -36,6 +36,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, readwrite, assign)CGFloat angle;
 
+/**
+ position
+ */
+@property(nonatomic, readwrite, assign)NSInteger position;
+
+
 
 
 /**

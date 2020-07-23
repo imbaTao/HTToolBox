@@ -7,14 +7,17 @@
 //
 
 #import "UIImageView+HTImageView.h"
+#import "UIView+HTUIViewTool.h"
+
+
 @implementation UIImageView (HTImageView)
 + (instancetype)name:(NSString *)name{
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
 }
 
-+ (instancetype)name:(NSString *)name superView:(UIView *)superView{
-    UIImageView *v = [[UIImageView alloc] initWithImage:[UIImage imageNamed:name]];
-    [superView addSubview:v];
++ (instancetype)name:(NSString *)name radius:(CGFloat)radius {
+    UIImageView *v =  [self name:name];
+    [v settingCornerRadius:radius];
     return v;
 }
 
