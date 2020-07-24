@@ -48,6 +48,9 @@
     [self.icon setContentHuggingPriority:UILayoutPriorityDragThatCanResizeScene forAxis:UILayoutConstraintAxisHorizontal];
     
     
+    
+    
+    UIImage *img = self.icon.image;
     switch (position) {
         case 0:{
             // layout
@@ -55,6 +58,7 @@
                 make.left.offset(0);
                 make.centerY.equalTo(self);
                 make.right.equalTo(self.content.mas_left).offset(-self.interval);
+                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
             }];
             
             [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -67,6 +71,7 @@
             [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_lessThanOrEqualTo(0);
                 make.centerY.equalTo(self);
+                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
             }];
             // layout
             [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {

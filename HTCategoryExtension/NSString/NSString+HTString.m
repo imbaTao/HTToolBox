@@ -38,6 +38,28 @@
 }
 
 
+- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size style:(NSMutableParagraphStyle *)style{
+    CGSize result;
+    if (!font) font = [UIFont systemFontOfSize:12];
+    if ([self respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+        NSMutableDictionary *attr = [NSMutableDictionary new];
+        attr[NSFontAttributeName] = font;
+        attr[NSParagraphStyleAttributeName] = style;
+        CGRect rect = [self boundingRectWithSize:size
+                                         options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                      attributes:attr context:nil];
+        result = rect.size;
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        result = [self sizeWithFont:font constrainedToSize:size lineBreakMode:style.lineBreakMode];
+#pragma clang diagnostic pop
+    }
+    return result;
+}
+
+
+
 
 // 传入字体，获取宽度
 - (CGFloat)ht_widthForFont:(UIFont *)font height:(CGFloat)height mode:(NSLineBreakMode)lineBreakMode {

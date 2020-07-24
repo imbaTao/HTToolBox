@@ -27,6 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode;
 
+/**
+传入字体、最大尺寸，直接获取实际尺寸
+@param font 字体
+@param size 最大尺寸
+@param style 富文本的风格
+*/
+- (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size style:(NSMutableParagraphStyle *)style;
 
 /**
  传入字体、高度，直接获取宽度

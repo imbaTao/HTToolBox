@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+HTEx.h"
-
+#import <SDWebImageDownloader.h>
 @implementation UIImage (HTUIImage)
 
 + (UIImage *)name:(NSString *)name {
@@ -27,7 +27,7 @@
 */
 - (void)downloadImages:(NSArray<NSString *> *)imgsArray completion:(void (^)(NSArray * _Nonnull, NSArray * _Nonnull))completionBlock {
     SDWebImageDownloader *manager = [SDWebImageDownloader sharedDownloader];
-        manager.downloadTimeout = 20;
+    manager.config.downloadTimeout = 20;
         __block NSMutableDictionary *resultImageDict = [NSMutableDictionary new];
     __block NSMutableDictionary *resultDic = [NSMutableDictionary new];
         for(int i=0;i<imgsArray.count;i++) {
