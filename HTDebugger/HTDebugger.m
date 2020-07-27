@@ -30,7 +30,7 @@ singleM();
     [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         HTFPSLabel *label = [[HTFPSLabel alloc] initWithFrame:CGRectMake(SCREEN_W / 2 - 100
-                                                                         , StatusBarTopHeight, 50, 20)];
+                                                                         , HTStatusBarTopHeight, 50, 20)];
         if (window.safeAreaInsets.top > 0) {
 //             label.x = 30;
              label.y = 0;

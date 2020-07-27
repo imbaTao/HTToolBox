@@ -144,7 +144,7 @@ singleM()
     return ([RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         
         NSString *baseUrl = [self disposeUrl:url];
-         LOG(@"当前请求接口：%@ 当前请求参数：%@",baseUrl,params);
+        LOG(@"当前请求接口：%@ 当前请求参数：%@  token: %@",baseUrl,params,USER.token);
         
         // post请求
         [HTNET.manager POST:baseUrl parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -165,7 +165,9 @@ singleM()
             }else {
                 // 这里是code不同返回error
                 // 一般操作是展示错误信息
-                HTShowError(model.message);
+//                HTShowError(model.message);
+                
+                LOG(@"接口报错：%@    错误原因:%@",baseUrl,model.message);
                 [subscriber sendError:task.error];
             }
             
@@ -175,6 +177,8 @@ singleM()
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             // 处理失败的模型,结束订阅
+            
+             LOG(@"接口报错：%@    错误原因:%@",baseUrl,error.localizedDescription);
             [subscriber sendError:error];
             [subscriber sendCompleted];
         }];

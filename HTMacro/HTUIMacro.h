@@ -20,15 +20,15 @@
 #define StatusBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height)
 
 // 导航栏高度
-#define NavigationBarHeight (StatusBarHeight + 44)
+#define HTNavigationBarHeight (StatusBarHeight + 44)
 
 // 标签栏高度
-#define TabBarHeight (StatusBarHeight > 20 ? 83 : 49)
+#define HTTabBarHeight (StatusBarHeight > 20 ? 83 : 49)
 
 // 底部安全区域高度
-#define TabBarBottomHeight (StatusBarHeight > 20 ? 34 : 0)
+#define HTTabBarBottomHeight (StatusBarHeight > 20 ? 34 : 0)
 
 // 顶部新增高度
-#define StatusBarTopHeight (StatusBarHeight > 20 ? 24 : 0)
+#define HTStatusBarTopHeight (StatusBarHeight > 20 ? 24 : 0)
 
 #endif /* HTUIMacro_h */
