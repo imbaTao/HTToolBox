@@ -54,12 +54,17 @@ singleM();
 //        CampusCertificationController //校园 组织认证
 //        testVC = [[NSClassFromString(@"UniversityController") alloc] init];
         
-        testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
-               
+         testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
+//       testVC = [[NSClassFromString(@"ActivityCategoriesController") alloc] init];
+        
+        
+        
+        
+        
         
 //        HomeController *vc = [[HomeController alloc] init];
 //        vc.view.backgroundColor = [UIColor redColor];
-//        [vc cameraBtnClick];
+////        [vc cameraBtnClick];
 //        testVC = vc;
         
         

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 整型转字符串
 #define INTTOSTRING(num) [NSString stringWithFormat:@"%zi",num]
+#define FLOATTOSTRING(num) [NSString stringWithFormat:@"%lf",num]
 
 @interface HTCommonViewModel : NSObject
 
