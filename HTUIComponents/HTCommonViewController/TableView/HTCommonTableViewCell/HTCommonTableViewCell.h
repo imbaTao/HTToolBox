@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
  初始化UI
  */
 - (void)setupUI;
+
+- (void)renderWithModel:(id)model;
 @end
 
 NS_ASSUME_NONNULL_END

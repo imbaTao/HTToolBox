@@ -151,6 +151,22 @@
             }
         }];
     }
+    
+    // 如果允许上拉加载，且没有尾部刷新《
+    if (self.vm.canPullUp && !self.tableView.mj_footer && !self.vm.canPulldown) {
+        @weakify(self);
+        // 那么添加尾部刷新
+        [self.tableView ht_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+            // 加载上拉刷新的数据
+            @strongify(self);
+            [self footerRefresh];
+        }];
+        
+        // 自动刷新
+        if (self.vm.autoFirstRefresh) {
+            [self.tableView.mj_footer beginRefreshing];
+        }
+    }
 }
 
 // 下拉事件

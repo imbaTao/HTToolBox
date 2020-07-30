@@ -13,7 +13,7 @@
 
 
 #import "HomeController.h"
-#define ISDEBUGER 0
+#define ISDEBUGER 1
 @implementation HTDebugger
 
 singleM();
@@ -54,19 +54,19 @@ singleM();
 //        CampusCertificationController //校园 组织认证
 //        testVC = [[NSClassFromString(@"UniversityController") alloc] init];
         
-         testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
+//         testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
 //       testVC = [[NSClassFromString(@"ActivityCategoriesController") alloc] init];
         
-        
-        
+        testVC = [[NSClassFromString(@"YNArticleDetailShortViewController") alloc] init];
+        testVC.param = @{@"ID" : @"628"};
         
         
         
 //        HomeController *vc = [[HomeController alloc] init];
 //        vc.view.backgroundColor = [UIColor redColor];
-////        [vc cameraBtnClick];
+////
 //        testVC = vc;
-        
+//           [vc cameraBtnClick];
         
         
         /** ----------------------------- 分割线 ------------------------------ */

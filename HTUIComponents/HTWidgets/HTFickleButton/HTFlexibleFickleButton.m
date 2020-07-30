@@ -16,7 +16,7 @@
     if (!_interval) {
         _interval = 4;
         @weakify(self);
-          [RACObserve(self, interval) subscribeNext:^(id  _Nullable x) {
+          [[RACObserve(self, interval) skip:1] subscribeNext:^(id  _Nullable x) {
               @strongify(self);
               [self relayoutWithPositon:self.position];
           }];
