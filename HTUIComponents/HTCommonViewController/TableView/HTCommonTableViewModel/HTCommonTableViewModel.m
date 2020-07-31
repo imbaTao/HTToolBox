@@ -111,7 +111,14 @@
     return self.classNames.firstObject;
 }
 #pragma mark - Setter && Getter
-- (void)setData2:(NSArray *)data2 {
+- (NSMutableArray *)data {
+    if (!_data) {
+        _data = [NSMutableArray array];
+    }
+    return _data;
+}
+
+- (void)setData2:(NSMutableArray *)data2 {
     _data2 = data2;
     
     // 这里这样写是因为kvo中不能用全局变量改变data 所以暂时用中转方案

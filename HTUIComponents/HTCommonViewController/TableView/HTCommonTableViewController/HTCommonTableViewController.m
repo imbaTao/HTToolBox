@@ -63,15 +63,15 @@
         [self.tableView.mj_footer endRefreshing];
         
         // 旧值
-        NSArray *oldValue = change[@"old"];
+        NSMutableArray *oldValue = change[@"old"];
         if (![oldValue isKindOfClass:[NSArray class]]) {
-            oldValue = [NSArray array];
+            oldValue = [NSMutableArray array];
         }
         
         // 新值
-        NSArray *newValue = change[@"new"];
+        NSMutableArray *newValue = change[@"new"];
         if (![newValue isKindOfClass:[NSArray class]]) {
-            newValue = [NSArray array];
+            newValue = [NSMutableArray array];
         }
         
         
@@ -86,7 +86,7 @@
                 [self footerRefresh];
             }];
         }
-        
+
         // 如果数量小于一页的数量那么隐藏上拉,否则添加footer
         if (newValue.count < self.vm.pageSize) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -94,7 +94,7 @@
         
         // 上拉刷新
         if (self.vm.page != 1) {
-            NSArray *data1 = [oldValue arrayByAddingObjectsFromArray:newValue];
+            NSMutableArray *data1 = [[oldValue arrayByAddingObjectsFromArray:newValue] mutableCopy];
             self.vm.data2 = data1;
         }else {
             self.vm.data2 = newValue;
@@ -152,7 +152,7 @@
         }];
     }
     
-    // 如果允许上拉加载，且没有尾部刷新《
+//     如果允许上拉加载，且没有尾部刷新
     if (self.vm.canPullUp && !self.tableView.mj_footer && !self.vm.canPulldown) {
         @weakify(self);
         // 那么添加尾部刷新
@@ -161,7 +161,7 @@
             @strongify(self);
             [self footerRefresh];
         }];
-        
+
         // 自动刷新
         if (self.vm.autoFirstRefresh) {
             [self.tableView.mj_footer beginRefreshing];

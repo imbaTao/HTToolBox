@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  数据源
  */
-@property (nonatomic, readwrite, strong)NSArray *data;
+@property (nonatomic, readwrite, strong)NSMutableArray *data;
 
 /**
  数据源2，主要用来上下拉数据中转用的，平时用不到
  */
-@property(nonatomic, readwrite, copy)NSArray *data2;
+@property(nonatomic, readwrite, copy)NSMutableArray *data2;
 
 /**
  风格

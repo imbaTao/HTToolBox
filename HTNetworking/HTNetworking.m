@@ -177,7 +177,7 @@ singleM()
             [subscriber sendCompleted];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             // 处理失败的模型,结束订阅
-            
+            HTHiddenLoading;
              LOG(@"接口报错：%@    错误原因:%@",baseUrl,error.localizedDescription);
             [subscriber sendError:error];
             [subscriber sendCompleted];
