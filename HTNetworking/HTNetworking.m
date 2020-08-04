@@ -168,7 +168,8 @@ singleM()
 //                HTShowError(model.message);
                 
                 LOG(@"接口报错：%@    错误原因:%@",baseUrl,model.message);
-                [subscriber sendError:task.error];
+                NSError *error = [[NSError alloc] initWithDomain:baseUrl  code:model.code userInfo:nil];
+                [subscriber sendError:error];
             }
             
             
