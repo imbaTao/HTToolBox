@@ -12,16 +12,19 @@
 
 
 
-- (NSInteger)interval {
-    if (!_interval) {
-        _interval = 4;
+- (instancetype)initWithHorizontalRotationButtonWithTitle:(NSString *)title font:(UIFont *)font normalColor:(UIColor *)color imgName:(NSString *)imgName position:(NSInteger)position {
+    self = [super initWithHorizontalRotationButtonWithTitle:title font:font
+                                                normalColor:color imgName:imgName position:position];
+    if (self) {
         @weakify(self);
-          [[RACObserve(self, interval) skip:1] subscribeNext:^(id  _Nullable x) {
-              @strongify(self);
-              [self relayoutWithPositon:self.position];
-          }];
+       [[RACObserve(self, interval) skip:1] subscribeNext:^(id  _Nullable x) {
+           @strongify(self);
+           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+               [self relayoutWithPositon:self.position];
+           });
+       }];
     }
-    return _interval;
+    return self;
 }
 
 // 子类复写
@@ -51,6 +54,7 @@
     
     
     UIImage *img = self.icon.image;
+    
     switch (position) {
         case 0:{
             // layout
@@ -58,7 +62,10 @@
                 make.left.offset(0);
                 make.centerY.equalTo(self);
                 make.right.equalTo(self.content.mas_left).offset(-self.interval);
-                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
+                
+                if (img) {
+                    make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
+                }
             }];
             
             [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -71,7 +78,10 @@
             [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_lessThanOrEqualTo(0);
                 make.centerY.equalTo(self);
-                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
+                if (img) {
+                   make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
+                }
+//                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
             }];
             // layout
             [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -90,6 +100,19 @@
 
 - (void)changeNewTitle:(NSString *)newValue {
     self.content.text = newValue;
+}
+
+
+//- (void)flickButtonChangeIcon:(NSString *)value {
+//    self.icon.image = [UIImage imageNamed:value];
+//}
+
+
+- (void)flickButtonChangeTitle:(NSString *)value {
+      self.content.text = value;
+     [self mas_updateConstraints:^(MASConstraintMaker *make) {
+         make.width.offset(self.content.intrinsicContentSize.width + 6 + self.icon.size.width + self.interval);
+     }];
 }
 
 @end

@@ -39,6 +39,13 @@
         if (!maskColor) {
             maskColor = rgba(0, 0, 0, 0.5);
         }
+        //增加监听，当键盘出现或改变时收出消息
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)name:UIKeyboardWillShowNotification object:nil];
+      //增加监听，当键退出时收出消息
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)name:UIKeyboardWillHideNotification
+                                                 object:nil];
+        
+        
         self.backgroundColor = maskColor;
         self.animateInterval = animateInterval;
         
@@ -64,8 +71,23 @@
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         }];
+        
+         [self hideMask];
     }
     return self;
+}
+
+
+//当键盘出现或改变时调用
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+   [self showMask];
+}
+
+//当键退出时调用
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    [self hideMask];
 }
 
 - (void)changeCoreSubView:(UIView *)coreSubView {
