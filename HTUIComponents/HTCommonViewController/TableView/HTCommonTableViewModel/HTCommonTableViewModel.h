@@ -43,6 +43,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite, assign) BOOL autoFirstRefresh;
 
 /**
+ 是否第一次静默刷新
+ */
+@property (nonatomic, readwrite, assign) BOOL firtTimeQuiet;
+
+/**
+ 是否都静默刷新
+ */
+@property (nonatomic, readwrite, assign) BOOL allQuietRefresh;
+
+/**
  当前页 defalut is 1
  */
 @property (nonatomic, readwrite, assign) NSInteger page;
@@ -117,6 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
  返回cell高度
  */
 - (CGFloat)heightOfRow:(NSIndexPath *)indexPath;
+
 
 /**
  返回sectionHeader高度

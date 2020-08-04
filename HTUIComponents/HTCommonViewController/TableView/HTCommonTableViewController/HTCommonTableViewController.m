@@ -138,7 +138,11 @@
         }];
         
         if (self.vm.autoFirstRefresh) {
-            [self.tableView.mj_header beginRefreshing];
+            if (self.vm.firtTimeQuiet) {
+               [self headerRefresh];
+            }else {
+               [self.tableView.mj_header beginRefreshing];
+            }
         }
     }else if(!self.vm.canPulldown){
         // 监听滚动,移动背景墙的
@@ -164,7 +168,11 @@
 
         // 自动刷新
         if (self.vm.autoFirstRefresh) {
-            [self.tableView.mj_footer beginRefreshing];
+            if (self.vm.firtTimeQuiet) {
+                  [self footerRefresh];
+             }else {
+                   [self.tableView.mj_footer beginRefreshing];
+             }
         }
     }
 }
@@ -175,19 +183,19 @@
     [[[self.vm.fetchDataSourceCommand
        execute:@1]
       deliverOnMainThread]
-     subscribeNext:^(NSArray *datas) {
+     subscribeNext:^(NSMutableArray *datas) {
          @strongify(self)
          self.tableView.mj_footer.hidden = true;
          self.vm.page = 1;
-         if (![datas isKindOfClass:[NSArray class]] || !datas) {
-             datas = [NSArray array];
+         if (![datas isKindOfClass:[NSMutableArray class]] || !datas) {
+             datas = [NSMutableArray array];
          }
           self.vm.data = datas;
      } error:^(NSError *error) {
          @strongify(self)
          // 如果之前就没值的话赋值改变头部和尾部
          if (!self.vm.data) {
-             self.vm.data = @[];
+             self.vm.data = [@[] mutableCopy];
          }
          [self.tableView.mj_header endRefreshing];
      }];
@@ -203,15 +211,15 @@
          @strongify(self)
         self.tableView.mj_footer.hidden = false;
          self.vm.page += 1;
-         if (![datas isKindOfClass:[NSArray class]] || !datas) {
-             datas = [NSArray array];
+         if (![datas isKindOfClass:[NSMutableArray class]] || !datas) {
+             datas = [NSMutableArray array];
          }
           self.vm.data = datas;
      } error:^(NSError *error) {
          @strongify(self);
          // 如果之前就没值的话赋值改变头部和尾部
          if (!self.vm.data) {
-             self.vm.data = @[];
+             self.vm.data = [@[] mutableCopy];
          }
          [self.tableView.mj_footer endRefreshing];
      }];
