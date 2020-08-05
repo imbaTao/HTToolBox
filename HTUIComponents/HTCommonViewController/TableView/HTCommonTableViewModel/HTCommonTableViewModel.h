@@ -100,9 +100,30 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  空数据提示文字
  */
-@property(nonatomic, readwrite, copy)NSString *emtyTips;
+@property(nonatomic, readwrite, copy)NSString *emptyTips;
 
 
+/**
+ 空数据提示间距,默认0
+ */
+@property(nonatomic, readwrite, assign)CGFloat emptyInterval;
+
+
+/**
+ 空提示的字体
+ */
+@property(nonatomic, readwrite, strong)UIFont *emptyTipsFont;
+
+
+/**
+ 空提示的颜色
+ */
+@property(nonatomic, readwrite, strong)UIColor *emptyTipsColor;
+
+/**
+ 偏移值
+ */
+@property(nonatomic, readwrite, assign)CGPoint emptyOffset;
 
 
 

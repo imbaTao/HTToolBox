@@ -9,6 +9,7 @@
 #import "HTCommonViewController.h"
 #import "HTCommonTableViewModel.h"
 #import "HTCommonTableView.h"
+#import "HTCommonEmptyView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -70,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  设置空页面
  */
-- (void)setupEmptyView:(UIView *)emptyView;
+- (UIView *)setupEmptyView;
 @end
 
 NS_ASSUME_NONNULL_END

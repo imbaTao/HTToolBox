@@ -46,10 +46,19 @@
 }
 
 // 设置空提示页
-- (void)setupEmptyView {
+- (UIView *)setupEmptyView {
     //    self.emptyView.frame = self.tableView.bounds;
     //    [self.tableView addSubview:self.emptyView];
     //    self.emptyView.hidden = true;
+
+    
+    if (self.vm.emptyIconPath.hasValue) {
+            return  [[HTCommonEmptyView alloc] initWithEmptyIconPath:self.vm.emptyIconPath emptyTips:self.vm.emptyTips font:self.vm.emptyTipsFont textColor:self.vm.emptyTipsColor interval:self.vm.emptyInterval offset:self.vm.emptyOffset];
+    }else {
+        UIView *view = [[UIView alloc] init];
+        view.hidden = true;
+       return view;
+    }
 }
 
 // 监听ViewModel模型
@@ -100,8 +109,7 @@
             self.vm.data2 = newValue;
         }
         
-        // 展示或隐藏emptyView提示
-        [self showOrHideEmptyView:self.vm.data2.count > 0];
+     
         
         // 刷新数据
         [self reloadData];
@@ -117,11 +125,19 @@
 // 是否显示空数据视图
 - (void)showOrHideEmptyView:(BOOL)result {
     self.emptyView.hidden = result;
+    
+    // 如果显示空视图且没有数据
+    if (!result && !self.vm.data.count) {
+        self.tableView.mj_footer.hidden = true;
+    }else {
+        self.tableView.mj_footer.hidden = false;
+    }
 }
 
 // 刷新事件
 - (void)reloadData {
     [self.tableView reloadData];
+
 }
 
 
@@ -156,25 +172,34 @@
         }];
     }
     
-//     如果允许上拉加载，且没有尾部刷新
-    if (self.vm.canPullUp && !self.tableView.mj_footer && !self.vm.canPulldown) {
-        @weakify(self);
-        // 那么添加尾部刷新
-        [self.tableView ht_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
-            // 加载上拉刷新的数据
-            @strongify(self);
-            [self footerRefresh];
-        }];
 
         // 自动刷新
         if (self.vm.autoFirstRefresh) {
-            if (self.vm.firtTimeQuiet) {
+            // 是否是静默刷新,是的话直接执行刷新函数
+            if (self.vm.firtTimeQuiet && self.vm.canPullUp) {
                   [self footerRefresh];
              }else {
-                   [self.tableView.mj_footer beginRefreshing];
+                  // 否则添加尾部，并执行刷新
+               if (self.vm.canPullUp && !self.tableView.mj_footer && !self.vm.canPulldown) {
+                   @weakify(self);
+                   // 那么添加尾部刷新
+                   [self.tableView ht_addFooterRefresh:^(MJRefreshAutoNormalFooter *footer) {
+                       // 加载上拉刷新的数据
+                       @strongify(self);
+                       [self footerRefresh];
+                   }];
              }
         }
-    }
+     }
+    
+    
+    
+    [[[self.tableView rac_signalForSelector:@selector(reloadData)] skip:1] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self);
+        
+        // 展示或隐藏emptyView提示
+        [self showOrHideEmptyView:self.vm.data2.count > 0];
+    }];
 }
 
 // 下拉事件
@@ -207,7 +232,7 @@
     [[[self.vm.fetchDataSourceCommand
        execute:@(self.vm.page + 1)]
       deliverOnMainThread]
-     subscribeNext:^(NSArray *datas) {
+     subscribeNext:^(NSMutableArray *datas) {
          @strongify(self)
         self.tableView.mj_footer.hidden = false;
          self.vm.page += 1;
@@ -287,8 +312,15 @@
 #pragma mark - Setter && Getter
 - (UIView *)emptyView {
     if (!_emptyView) {
-        [self setupEmptyView];
+        _emptyView = [self setupEmptyView];
+        [self.tableView addSubview:_emptyView];
+        [_emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.offset(0);
+            make.size.mas_equalTo(CGSizeMake(SCREEN_W, self.tableView.height));
+        }];
     }
     return _emptyView;
 }
+
+
 @end

@@ -139,11 +139,11 @@
     return _emptyIconPath;
 }
 
-- (NSString *)emtyTips {
-    if (!_emtyTips) {
-        _emtyTips = @"暂无商品信息";
+- (NSString *)emptyTips {
+    if (!_emptyTips) {
+        _emptyTips = @"暂无商品信息";
     }
-    return _emtyTips;
+    return _emptyTips;
 }
 
 - (NSArray *)classNames {
