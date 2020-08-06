@@ -124,7 +124,15 @@
 
 // 是否显示空数据视图
 - (void)showOrHideEmptyView:(BOOL)result {
+    // 没有设置空视图
+    if ([self.emptyView isMemberOfClass:[UIView class]]) {
+        self.tableView.mj_footer.hidden = false;
+        self.emptyView.hidden = true;
+        return;
+    }
+    
     self.emptyView.hidden = result;
+    
     
     // 如果显示空视图且没有数据
     if (!result && !self.vm.data.count) {

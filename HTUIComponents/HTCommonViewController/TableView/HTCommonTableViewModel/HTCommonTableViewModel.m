@@ -132,20 +132,6 @@
     return _refreshSubject;
 }
 
-- (NSString *)emptyIconPath {
-    if (!_emptyIconPath) {
-        _emptyIconPath = @"JHGStoreProductEmpty";
-    }
-    return _emptyIconPath;
-}
-
-- (NSString *)emptyTips {
-    if (!_emptyTips) {
-        _emptyTips = @"暂无商品信息";
-    }
-    return _emptyTips;
-}
-
 - (NSArray *)classNames {
     if (!_classNames) {
         _classNames = @[@"UITableViewCell,UICollectionViewCell"];
