@@ -25,7 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+<<<<<<< HEAD
  检测GPS权限
+=======
+ 获取相册权限
+>>>>>>> d22f8fb9e59a6e7030cd10239725f5c6377251cd
  */
 + (void)fetchGPSAuthorizationStatus:(void (^)(BOOL result))resultBlock;
 
