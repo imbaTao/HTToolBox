@@ -14,7 +14,7 @@
 
 
 #import "HomeController.h"
-#define ISDEBUGER 0
+#define ISDEBUGER 1
 @implementation HTDebugger
 
 singleM();
@@ -56,21 +56,21 @@ singleM();
 //        testVC = [[NSClassFromString(@"UniversityController") alloc] init];
         
 //         testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
-//       testVC = [[NSClassFromString(@"ActivityCategoriesController") alloc] init];
+       testVC = [[NSClassFromString(@"PublishLongArticlesController") alloc] init];
         
         
-        YNArticleDetailCommonModel *model = [[YNArticleDetailCommonModel alloc] init];
-        model.ID = @"668";
-        model.title = @"第十五届校园热舞大赛";
-        model.content = @"动感地带全国大学生电视挑战赛于2004年首次举办，分别设有齐舞项目还有Breakin crew battle。从04年到08年，动感地带街舞比赛的规模逐年增长，并成为了国内最有号召力的大型街舞赛事。2003年由中央电视台体育节目中心、国家体育总局体操运动管理中心，中视体育推广有限公司承办第一、第二、第三届全国街舞电视大赛，取得了极大的成功，吸引了一千多名专业和业余街舞选手参加，获得了良好的社会效益．大赛用规范化的体育竞赛形式、系统的评分规则、公开公正的评判原则来组织街舞比赛，受到新闻媒体和社会各界极大的关注．体育竞赛的特殊魅力吸引了各地千余名酷爱街舞的青年参加，为他们提供了一个展示街舞风采的最好舞台。";
-        model.startTime = @"星期六，7月20日";
-        model.endTime = @"1:30 pm - 3:30 pm";
-        model.personId = USER.ID;
-        model.logo = USER.logo;
-        model.nickname = USER.nickname;
-        testVC = [[NSClassFromString(@"YNArticleDetailActivityViewController") alloc] init];
-         testVC.param = @{@"detailModel" : model};
-        
+//        YNArticleDetailCommonModel *model = [[YNArticleDetailCommonModel alloc] init];
+//        model.ID = @"668";
+//        model.title = @"第十五届校园热舞大赛";
+//        model.content = @"动感地带全国大学生电视挑战赛于2004年首次举办，分别设有齐舞项目还有Breakin crew battle。从04年到08年，动感地带街舞比赛的规模逐年增长，并成为了国内最有号召力的大型街舞赛事。2003年由中央电视台体育节目中心、国家体育总局体操运动管理中心，中视体育推广有限公司承办第一、第二、第三届全国街舞电视大赛，取得了极大的成功，吸引了一千多名专业和业余街舞选手参加，获得了良好的社会效益．大赛用规范化的体育竞赛形式、系统的评分规则、公开公正的评判原则来组织街舞比赛，受到新闻媒体和社会各界极大的关注．体育竞赛的特殊魅力吸引了各地千余名酷爱街舞的青年参加，为他们提供了一个展示街舞风采的最好舞台。";
+//        model.startTime = @"星期六，7月20日";
+//        model.endTime = @"1:30 pm - 3:30 pm";
+//        model.personId = USER.ID;
+//        model.logo = USER.logo;
+//        model.nickname = USER.nickname;
+//        testVC = [[NSClassFromString(@"YNArticleDetailActivityViewController") alloc] init];
+//         testVC.param = @{@"detailModel" : model};
+//
 
         
         

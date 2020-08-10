@@ -23,7 +23,7 @@
 }
 
 // 获取相机权限
-+ (void)fechCameraAuthorizationStatus:(void (^)(BOOL result))resultBlock{
++ (void)fetchCameraAuthorizationStatus:(void (^)(BOOL result))resultBlock{
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if ((authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied)) {
         // 无权限显示权限弹窗
@@ -48,7 +48,7 @@
 }
 
 // 获取相册权限
-+ (void)fechPhotoLibraryAuthorizationStatus:(void (^)(BOOL result))resultBlock{
++ (void)fetchPhotoLibraryAuthorizationStatus:(void (^)(BOOL result))resultBlock{
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if ((status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)) {
@@ -62,6 +62,17 @@
         });
     }];
 }
+
+
+
+/**
+ 获取相册权限
+ */
++ (void)fetchGPSAuthorizationStatus:(void (^)(BOOL result))resultBlock {
+    resultBlock(true);
+}
+
+
 
 // 展示前往设置界面的面板
 + (void)p_showSettingTipsWithType:(NSInteger)type {

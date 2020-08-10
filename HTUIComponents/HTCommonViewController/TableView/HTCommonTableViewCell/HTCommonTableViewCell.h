@@ -11,6 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HTCommonTableViewCell : UITableViewCell
+
+/**
+ 分割线
+ */
+@property(nonatomic, readwrite, strong)UIView *segementLine;
+
+
 /**
  初始化UI
  */

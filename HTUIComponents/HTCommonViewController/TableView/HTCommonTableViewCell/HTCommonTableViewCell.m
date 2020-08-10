@@ -34,4 +34,12 @@
     // Configure the view for the selected state
 }
 
+
+- (UIView *)segementLine {
+    if (!_segementLine) {
+        _segementLine = [[UIView alloc] init];
+        [self addSubview:_segementLine];
+    }
+    return _segementLine;
+}
 @end
