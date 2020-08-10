@@ -16,12 +16,20 @@ NS_ASSUME_NONNULL_BEGIN
  检测相机权限
  @param resultBlock 返回的结果 true 为可用，false为不可用
  */
-+ (void)fechCameraAuthorizationStatus:(void(^)(BOOL result))resultBlock;
++ (void)fetchCameraAuthorizationStatus:(void(^)(BOOL result))resultBlock;
 
 /**
  获取相册权限
  */
-+ (void)fechPhotoLibraryAuthorizationStatus:(void (^)(BOOL result))resultBlock;
++ (void)fetchPhotoLibraryAuthorizationStatus:(void (^)(BOOL result))resultBlock;
+
+
+/**
+ 检测GPS权限
+ */
++ (void)fetchGPSAuthorizationStatus:(void (^)(BOOL result))resultBlock;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
