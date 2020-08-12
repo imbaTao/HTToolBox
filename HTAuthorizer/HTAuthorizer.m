@@ -135,9 +135,9 @@
 // 获取GPS权限
 + (void)fetchGPSAuthorizationStatus:(void (^)(BOOL))resultBlock {
      BOOL status = [CLLocationManager locationServicesEnabled];
-     if (!status) {
+     if (status) {
          CLAuthorizationStatus CLstatus = [CLLocationManager authorizationStatus];
-         if (CLstatus == kCLAuthorizationStatusDenied || CLstatus == kCLAuthorizationStatusDenied) {
+         if (CLstatus == kCLAuthorizationStatusDenied) {
              [self _showSettingTipsWithType:3];
              //未授权
              resultBlock(false);
