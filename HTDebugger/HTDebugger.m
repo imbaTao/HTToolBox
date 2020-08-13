@@ -56,7 +56,7 @@ singleM();
 //        testVC = [[NSClassFromString(@"UniversityController") alloc] init];
         
 //         testVC = [[NSClassFromString(@"ActivityReleaseController") alloc] init];
-       testVC = [[NSClassFromString(@"PublishLongArticlesController") alloc] init];
+//       testVC = [[NSClassFromString(@"PublishLongArticlesController") alloc] init];
         
         
 //        YNArticleDetailCommonModel *model = [[YNArticleDetailCommonModel alloc] init];
@@ -76,10 +76,10 @@ singleM();
         
         
         
-//        HomeController *vc = [[HomeController alloc] init];
+        HomeController *vc = [[HomeController alloc] init];
 //        vc.view.backgroundColor = [UIColor redColor];
 ////
-//        testVC = vc;
+        testVC = vc;
 //           [vc cameraBtnClick];
         
         
