@@ -12,7 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HTCommonEmptyView : UIView
 
+/**
+ emptyIcon
+ */
+@property(nonatomic, readwrite, strong)UIImageView *emptyIcon;
 
+/**
+ emptyTips
+ */
+@property(nonatomic, readwrite, strong)UILabel *emptyTips;
 
 /**
  初始化

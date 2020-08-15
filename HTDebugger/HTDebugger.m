@@ -14,7 +14,7 @@
 
 
 #import "HomeController.h"
-#define ISDEBUGER 1
+#define ISDEBUGER 0
 @implementation HTDebugger
 
 singleM();

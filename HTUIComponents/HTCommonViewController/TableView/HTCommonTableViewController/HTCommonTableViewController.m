@@ -322,6 +322,7 @@
     if (!_emptyView) {
         _emptyView = [self setupEmptyView];
         _emptyView.userInteractionEnabled = false;
+        _emptyView.hidden = true;
         [self.tableView addSubview:_emptyView];
         [_emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(0);

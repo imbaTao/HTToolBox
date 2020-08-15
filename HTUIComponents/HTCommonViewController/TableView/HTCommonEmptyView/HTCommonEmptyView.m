@@ -9,15 +9,7 @@
 #import "HTCommonEmptyView.h"
 
 @interface HTCommonEmptyView()
-/**
- emptyIcon
- */
-@property(nonatomic, readwrite, strong)UIImageView *emptyIcon;
 
-/**
- emptyTips
- */
-@property(nonatomic, readwrite, strong)UILabel *emptyTips;
 
 
 @end
