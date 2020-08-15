@@ -70,7 +70,7 @@ singleM();
 //        model.nickname = USER.nickname;
 //        testVC = [[NSClassFromString(@"YNArticleDetailActivityViewController") alloc] init];
 //         testVC.param = @{@"detailModel" : model};
-//
+
 
         
         

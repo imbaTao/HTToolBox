@@ -199,15 +199,6 @@
              }
         }
      }
-    
-    
-    
-    [[[self.tableView rac_signalForSelector:@selector(reloadData)] skip:1] subscribeNext:^(RACTuple * _Nullable x) {
-        @strongify(self);
-        
-        // 展示或隐藏emptyView提示
-        [self showOrHideEmptyView:self.vm.data2.count > 0];
-    }];
 }
 
 // 下拉事件
@@ -224,6 +215,9 @@
              datas = [NSMutableArray array];
          }
           self.vm.data = datas;
+        
+        // 展示或隐藏emptyView提示
+        [self showOrHideEmptyView:self.vm.data2.count > 0];
      } error:^(NSError *error) {
          @strongify(self)
          // 如果之前就没值的话赋值改变头部和尾部
@@ -231,6 +225,9 @@
              self.vm.data = [@[] mutableCopy];
          }
          [self.tableView.mj_header endRefreshing];
+         
+         // 展示或隐藏emptyView提示
+         [self showOrHideEmptyView:self.vm.data2.count > 0];
      }];
 }
 
@@ -248,6 +245,8 @@
              datas = [NSMutableArray array];
          }
           self.vm.data = datas;
+        // 展示或隐藏emptyView提示
+        [self showOrHideEmptyView:self.vm.data2.count > 0];
      } error:^(NSError *error) {
          @strongify(self);
          // 如果之前就没值的话赋值改变头部和尾部
@@ -255,6 +254,8 @@
              self.vm.data = [@[] mutableCopy];
          }
          [self.tableView.mj_footer endRefreshing];
+         // 展示或隐藏emptyView提示
+         [self showOrHideEmptyView:self.vm.data2.count > 0];
      }];
 }
 
