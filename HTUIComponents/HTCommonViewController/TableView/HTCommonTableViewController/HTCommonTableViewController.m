@@ -120,6 +120,17 @@
         @strongify(self);
         [self reloadData];
     }];
+    
+    
+        
+        
+        
+    [[[self.tableView rac_signalForSelector:@selector(reloadData)] skip:1] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self);
+        
+        // 展示或隐藏emptyView提示
+        [self showOrHideEmptyView:self.vm.data2.count > 0];
+    }];
 }
 
 // 是否显示空数据视图

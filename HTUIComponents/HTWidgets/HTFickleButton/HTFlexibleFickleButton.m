@@ -61,7 +61,7 @@
             [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.offset(0);
                 make.centerY.equalTo(self);
-                make.right.equalTo(self.content.mas_left).offset(-self.interval);
+//                make.right.equalTo(self.content.mas_left).offset(-self.interval);
                 
                 if (img) {
                     make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
@@ -69,12 +69,19 @@
             }];
             
             [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.icon.mas_right).offset(self.interval);
+                make.left.offset(hor(img.size.width) + self.interval);
                 make.centerY.equalTo(self);
-                make.right.offset(0);
+//                make.right.offset(0);
             }];
         }break;
         case 1:{
+            // layout
+           [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
+               make.left.offset(0);
+               make.centerY.equalTo(self);
+               make.right.offset(hor(-img.size.width) + self.interval);
+           }];
+            
             [self.icon mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_lessThanOrEqualTo(0);
                 make.centerY.equalTo(self);
@@ -83,12 +90,7 @@
                 }
 //                make.size.mas_equalTo(HTSIZE(img.size.width, img.size.height));
             }];
-            // layout
-            [self.content mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.offset(0);
-                make.centerY.equalTo(self);
-                make.right.equalTo(self.icon.mas_left).offset(-self.interval);
-            }];
+           
         }break;
         default:break;
     }
@@ -113,6 +115,16 @@
      [self mas_updateConstraints:^(MASConstraintMaker *make) {
          make.width.offset(self.content.intrinsicContentSize.width + 6 + self.icon.size.width + self.interval);
      }];
+    
+    
+    //    CGFloat oldTextWidth = [self.content.text sizeForFont:self.content.font size:CGSizeMake(SCREEN_W, self.content.size.height) mode:self.content.lineBreakMode].width;
+    
+//    CGFloat newTextWidth = [value sizeForFont:self.content.font size:CGSizeMake(SCREEN_W, self.content.size.height) mode:self.content.lineBreakMode].width;
+//     [self mas_updateConstraints:^(MASConstraintMaker *make) {
+//       make.width.offset(newTextWidth + self.icon.size.width + self.interval);
+//    }];
+//
+//    self.content.text = value;
 }
 
 @end
