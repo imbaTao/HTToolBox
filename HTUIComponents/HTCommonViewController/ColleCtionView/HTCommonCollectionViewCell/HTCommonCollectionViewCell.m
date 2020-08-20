@@ -21,4 +21,8 @@
     
 }
 
+- (void)renderWithModel:(id)model {
+    
+}
+
 @end
