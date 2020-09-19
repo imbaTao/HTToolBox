@@ -58,6 +58,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CAGradientLayer *)settingGradientLayerWithRect:(CGRect)rect colors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius startPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint;
 
+
+
+// 设置水平渐变色图层
+- (CAGradientLayer *)settingHorizontalGradientLayerWithColors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius;
+
+// 设置垂直渐变色图层
+- (CAGradientLayer *)settingVerticalGradientLayerWithColors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius;
+
+
+
+
+
+
+
 /**
  二者都设置
  */
