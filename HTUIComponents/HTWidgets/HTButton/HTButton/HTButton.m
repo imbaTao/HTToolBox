@@ -12,13 +12,22 @@
 
 - (BOOL)pointInside:(CGPoint)point
           withEvent:(UIEvent *)event {
-    const static CGFloat minimumSide = 0;
+     CGFloat minimumSide = self.hotAreaWidth;
     CGFloat differenceY = minimumSide - self.bounds.size.height;
     CGFloat differenceX = minimumSide - self.bounds.size.width;
 
     CGFloat insetY = MAX(0, differenceY);
     CGFloat insetX = MAX(0, differenceX);
+   
+    return CGRectContainsPoint(CGRectInset(self.bounds, -insetX, -insetY), point);
+}
 
-    return CGRectContainsPoint(CGRectInset(self.bounds, -insetX, -insetY), point) || [super pointInside:point withEvent:event];
+
+// 默认44
+- (CGFloat)hotAreaWidth {
+    if (!_hotAreaWidth) {
+        _hotAreaWidth = 44;
+    }
+    return _hotAreaWidth;
 }
 @end

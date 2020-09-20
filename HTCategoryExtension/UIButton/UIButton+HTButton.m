@@ -86,7 +86,7 @@
 #pragma mark - 扩大点击热区
 - (BOOL)pointInside:(CGPoint)point
           withEvent:(UIEvent *)event {
-    const static CGFloat minimumSide = 60;
+    const static CGFloat minimumSide = 44;
     CGFloat differenceY = minimumSide - self.bounds.size.height;
     CGFloat differenceX = minimumSide - self.bounds.size.width;
 

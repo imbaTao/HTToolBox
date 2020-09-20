@@ -17,18 +17,18 @@
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 
 // 状态栏高度
-#define StatusBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define HTStatusBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height)
 
 // 导航栏高度
-#define HTNavigationBarHeight (StatusBarHeight + 44)
+#define HTNavigationBarHeight (HTStatusBarHeight + 44)
 
 // 标签栏高度
-#define HTTabBarHeight (StatusBarHeight > 20 ? 83 : 49)
+#define HTTabBarHeight (HTStatusBarHeight > 20 ? 83 : 49)
 
 // 底部安全区域高度
-#define HTTabBarBottomHeight (StatusBarHeight > 20 ? 34 : 0)
+#define HTTabBarBottomHeight (HTStatusBarHeight > 20 ? 34 : 0)
 
 // 顶部新增高度
-#define HTStatusBarTopHeight (StatusBarHeight > 20 ? 24 : 0)
+#define HTStatusBarTopHeight (HTStatusBarHeight > 20 ? 24 : 0)
 
 #endif /* HTUIMacro_h */
