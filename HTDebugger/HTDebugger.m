@@ -10,10 +10,9 @@
 #import "HTDebuggerViewController.h"
 #import "HTCommonTabbarController.h"
 #import "HTFPSLabel.h"
-#import "YNArticleDetailCommonModel.h"
 
 
-#import "HomeController.h"
+#import "HomeViewController.h"
 #define ISDEBUGER 0
 @implementation HTDebugger
 
@@ -76,7 +75,7 @@ singleM();
         
         
         
-        HomeController *vc = [[HomeController alloc] init];
+        HomeViewController *vc = [[HomeViewController alloc] init];
 //        vc.view.backgroundColor = [UIColor redColor];
 ////
         testVC = vc;

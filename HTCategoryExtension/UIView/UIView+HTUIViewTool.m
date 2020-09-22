@@ -88,6 +88,63 @@
     return gradient;
 }
 
+
+
+// 设置水平渐变色图层
+- (CAGradientLayer *)settingHorizontalGradientLayerWithColors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius {
+
+    //拿到frame
+    [self layoutIfNeeded];
+    
+    // 创建图层
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.bounds;
+    NSMutableArray *colorArray = [NSMutableArray array];
+    for (UIColor *color in colors) {
+        [colorArray addObject:(id)color.CGColor];
+    }
+    gradient.colors = colorArray;
+    
+    // 默认水平方向
+    gradient.startPoint = CGPointMake(0, 0.5);
+    gradient.endPoint = CGPointMake(1, 0.5);
+    gradient.cornerRadius = cornerRadius;
+    
+    
+    self.layer.cornerRadius = cornerRadius;
+    [self.layer insertSublayer:gradient atIndex:0];
+    return gradient;
+}
+
+// 设置垂直渐变色图层
+- (CAGradientLayer *)settingVerticalGradientLayerWithColors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius {
+
+    //拿到frame
+    [self layoutIfNeeded];
+    
+    // 创建图层
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.bounds;
+    NSMutableArray *colorArray = [NSMutableArray array];
+    for (UIColor *color in colors) {
+        [colorArray addObject:(id)color.CGColor];
+    }
+    gradient.colors = colorArray;
+    
+    // 默认水平方向
+    gradient.startPoint = CGPointMake(0.5, 0);
+    gradient.endPoint = CGPointMake(0.5, 1);
+    gradient.cornerRadius = cornerRadius;
+    
+    self.layer.cornerRadius = cornerRadius;
+    [self.layer insertSublayer:gradient atIndex:0];
+    return gradient;
+}
+
+
+
+
+
 // 设置渐变和阴影
 - (CAGradientLayer *)settingGrandientAndShadowWithOffset:(CGSize)of shadowColor:(UIColor *)c opacity:(CGFloat)op rect:(CGRect)rect colors:(NSArray *)colors cornerRadius:(CGFloat)cornerRadius shadowRadius:(CGFloat)sr {
     [self settingShadowWithShadowRadius:sr offset:of color:c opacity:op];

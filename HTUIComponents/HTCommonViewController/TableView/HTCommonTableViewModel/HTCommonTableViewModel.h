@@ -7,6 +7,7 @@
 //
 
 #import "HTCommonViewModel.h"
+#import <ReactiveObjC.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

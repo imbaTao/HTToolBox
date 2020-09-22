@@ -7,7 +7,7 @@
 //
 
 #import "UIView+HTView.h"
-
+#import <objc/runtime.h>
 @implementation UIView (HTView)
 - (void)setupUI {
     // 复写

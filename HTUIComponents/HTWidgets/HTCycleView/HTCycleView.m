@@ -26,7 +26,6 @@
  */
 @property(nonatomic, readwrite, strong)RACSignal *timerSignal;
 
-
 @end
 
 @implementation HTCycleView

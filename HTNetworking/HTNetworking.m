@@ -100,7 +100,7 @@ singleM()
 + (RACSignal *)getWithParams:(NSMutableDictionary *)params url:(NSString *)url{
     return ([RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         NSString *baseUrl = [self disposeUrl:url];
-        LOG(@"当前请求接口：%@ 当前请求参数：%@",baseUrl,params);
+        NSLog(@"当前请求接口：%@ 当前请求参数：%@",baseUrl,params);
         
         // get请求
         [HTNET.manager GET:baseUrl parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -109,12 +109,12 @@ singleM()
             HTNetworkingDataModel *model = [self disposeResponseObject:responseObject task:task];
             
             
-            if (model.code == 19001) {//Youni账号在别处登录
-                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNeedLoginAgain object:nil];
-                // 结束订阅
-                [subscriber sendCompleted];
-                return;
-            }
+//            if (model.code == 19001) {
+//                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNeedLoginAgain object:nil];
+//                // 结束订阅
+//                [subscriber sendCompleted];
+//                return;
+//            }
             
             
             // 如果最终请求成功
@@ -144,7 +144,7 @@ singleM()
     return ([RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
         
         NSString *baseUrl = [self disposeUrl:url];
-        LOG(@"当前请求接口：%@ 当前请求参数：%@  token: %@",baseUrl,params,USER.token);
+//        NSLog(@"当前请求接口：%@ 当前请求参数：%@  token: %@",baseUrl,params,USER.token);
         
         // post请求
         [HTNET.manager POST:baseUrl parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -152,12 +152,12 @@ singleM()
             // 处理数据模型
             HTNetworkingDataModel *model = [self disposeResponseObject:responseObject task:task];
             
-            if (model.code == 19001) {//Youni账号在别处登录
-                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNeedLoginAgain object:nil];
-                // 结束订阅
-                [subscriber sendCompleted];
-                return;
-            }
+//            if (model.code == 19001) {//Youni账号在别处登录
+////                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNeedLoginAgain object:nil];
+//                // 结束订阅
+//                [subscriber sendCompleted];
+//                return;
+//            }
             
             // 如果最终请求成功
             if (model.isFinalSuccess) {
@@ -167,7 +167,7 @@ singleM()
                 // 一般操作是展示错误信息
 //                HTShowError(model.message);
                 
-                LOG(@"接口报错：%@    错误原因:%@",baseUrl,model.message);
+                NSLog(@"接口报错：%@    错误原因:%@",baseUrl,model.message);
                 NSError *error = [[NSError alloc] initWithDomain:baseUrl  code:model.code userInfo:nil];
                 [subscriber sendError:error];
             }
@@ -179,7 +179,7 @@ singleM()
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             // 处理失败的模型,结束订阅
             HTHiddenLoading;
-             LOG(@"接口报错：%@    错误原因:%@",baseUrl,error.localizedDescription);
+             NSLog(@"接口报错：%@    错误原因:%@",baseUrl,error.localizedDescription);
             [subscriber sendError:error];
             [subscriber sendCompleted];
         }];

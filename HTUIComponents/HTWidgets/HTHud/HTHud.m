@@ -38,7 +38,8 @@
     circleView.strokeThickness = 2;
     circleView.strokeColor = UIColor.whiteColor;
     hud.mode = MBProgressHUDModeCustomView;
-    hud.userInteractionEnabled = false;
+    
+
     [hud setMinSize:CGSizeMake(HUDCircleWidth, HUDCircleWidth)];
     
     // 需要一个中间图层
@@ -127,7 +128,8 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:showView animated:YES];
     hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
     hud.bezelView.backgroundColor = [UIColor blackColor];
-    hud.userInteractionEnabled = false;
+//    hud.userInteractionEnabled = false;
+     hud.userInteractionEnabled = true;
     [hud hideAnimated:true afterDelay:HUDDefaultShowTime];
     return hud;
 }
