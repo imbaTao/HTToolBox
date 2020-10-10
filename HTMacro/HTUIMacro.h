@@ -17,7 +17,7 @@
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 
 // 状态栏高度
-#define StatusBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define HTStatusBarHeight ([UIApplication sharedApplication].statusBarFrame.size.height)
 
 // 导航栏高度
 #define HTNavigationBarHeight (StatusBarHeight + 44)

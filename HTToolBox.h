@@ -11,7 +11,6 @@
 
 
 #import "HTMacro.h"
-#import "HTDebugger.h"
 #import "HTCategories.h"
 #import "HTThirdPartyNames.h"
 #import "HTHud.h"
@@ -38,7 +37,7 @@
 // 依赖的常用三方库
 #import <SDWebImage.h>
 #import <AFNetworking.h>
-#import <MBProgressHUD.h>
+//#import <MBProgressHUD.h>
 #import <RACUnit.h>
 #import <SDWebImage.h>
 #import <SDWebImage.h>
