@@ -11,6 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HTButton : UIButton
+/**
+ hotAreaWidth
+ */
+@property(nonatomic, readwrite, assign)CGFloat hotAreaWidth;
 
 @end
 
