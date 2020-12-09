@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define HTLoading dispatch_async(dispatch_get_main_queue(), ^{\
  [HTHud showLoadingWithView:nil];\
 })\
+
 //仅显示文字
 #define HTShowHint(hint) dispatch_async(dispatch_get_main_queue(), ^{\
  [HTHud showMesseage:hint showView:nil];\
