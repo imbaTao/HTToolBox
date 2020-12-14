@@ -122,9 +122,6 @@
     }];
     
     
-        
-        
-        
     [[[self.tableView rac_signalForSelector:@selector(reloadData)] skip:1] subscribeNext:^(RACTuple * _Nullable x) {
         @strongify(self);
         
